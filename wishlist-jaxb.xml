@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<onlineDatingWishlist>
+    <premium users>
+        <user>
+            <name>Brandon</name>
+            <age>29</age>
+            <sex>male</sex>
+            <interestedIn>Women</interestedIn>
+        </user>
+        <user>
+            <name>Branda</name>
+            <age>29</age>
+            <sex>female</sex>
+            <interestedIn>men</interestedIn>
+        </user>
+        <user>
+            <name>Steve</name>
+            <age>27</age>
+            <sex>male</sex>
+            <interestedIn>men</interestedIn>
+        </user>
+    </premium users>
+</onlineDatingWishlist>
