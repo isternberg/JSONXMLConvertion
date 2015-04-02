@@ -1,4 +1,5 @@
 package pojoToXML;
+
 import java.util.*;
 
 import javax.xml.bind.annotation.*;
@@ -12,14 +13,6 @@ public class OnlineDatingWishlist {
 
 	public OnlineDatingWishlist() {
 
-	}
-
-	// public List<User> getUsers() {
-	// return users;
-	// }
-
-	public void setUsers(List<User> users) {
-		this.users = users;
 	}
 
 	public OnlineDatingWishlist(List<User> users) {
