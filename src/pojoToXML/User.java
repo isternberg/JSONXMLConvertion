@@ -7,11 +7,11 @@ import javax.xml.bind.annotation.*;
 @XmlType(propOrder = { "name", "age", "sex", "interestedIn" })
 public class User {
 
-	protected User() {
+	public User() {
 
 	}
 
-	protected User(String name, int age, String interestedIn, String sex) {
+	public User(String name, int age, String interestedIn, String sex) {
 		super();
 		this.name = name;
 		this.age = age;

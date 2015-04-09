@@ -9,7 +9,7 @@ public class OnlineDatingWishlist {
 
 	@XmlElementWrapper(name = "premium users")
 	@XmlElement(name = "user")
-	List<User> users;
+	public List<User> users;
 
 	public OnlineDatingWishlist() {
 
@@ -19,4 +19,5 @@ public class OnlineDatingWishlist {
 		super();
 		this.users = users;
 	}
+
 }

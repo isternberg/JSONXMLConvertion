@@ -3,17 +3,19 @@ package pojoToXML;
 import java.io.*;
 import java.util.*;
 
-import javax.xml.bind.*;
+import converters.*;
 
 public class App {
 
-	private static final String WISHLIST_XML = "./wishlist-jaxb.xml";
+	private static final String WISHLIST_XML = "./wishlist.xml";
+	private static final String WISHLIST_JSON = "./wishlist.json";
 
-	public static void main(String[] args) throws JAXBException, IOException {
+	public static void main(String[] args) throws PojoConvertorException,
+			IOException {
 
 		List<User> myWishlist = new ArrayList<>();
 
-		User user1 = new User("Brandon", 29, "Women", "male");
+		User user1 = new User("Brandon", 29, "Women", "female");
 		User user2 = new User("Branda", 29, "men", "female");
 		User user3 = new User("Steve", 27, "men", "male");
 		myWishlist.add(user1);
@@ -21,16 +23,24 @@ public class App {
 		myWishlist.add(user3);
 		OnlineDatingWishlist wishlist = new OnlineDatingWishlist(myWishlist);
 
-		// create JAXB context and instantiate marshaller
-		JAXBContext context = JAXBContext
-				.newInstance(OnlineDatingWishlist.class);
-		Marshaller marshaller = context.createMarshaller();
-		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		PojoConverter<OnlineDatingWishlist> xmlConverter = new ToXmlConverter<>();
+		PojoConverter<OnlineDatingWishlist> jsonConvertor = new ToJsonConverter<>();
+
+		String xml = xmlConverter.convertPojo(OnlineDatingWishlist.class,
+				wishlist);
+		String json = jsonConvertor.convertPojo(OnlineDatingWishlist.class,
+				wishlist);
 
 		// Write to System.out
-		marshaller.marshal(wishlist, System.out);
-
+		System.out.println(xml);
+		System.out.println(json);
 		// Write to File
-		marshaller.marshal(wishlist, new File(WISHLIST_XML));
+		FileWriter xmlFileWriter = new FileWriter(new File(WISHLIST_XML));
+		xmlFileWriter.write(xml);
+		xmlFileWriter.close();
+		FileWriter jsonFileWriter = new FileWriter(new File(WISHLIST_JSON));
+		jsonFileWriter.write(json);
+		jsonFileWriter.close();
+
 	}
 }
